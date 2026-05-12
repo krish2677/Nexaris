@@ -2,44 +2,11 @@ import { useState, useCallback } from 'react'
 import './index.css'
 
 // ── APK Download Configuration ──
-// When your backend is live, set this to your API URL.
-// For now, it falls back to the GitHub Releases URL.
-const API_BASE = import.meta.env.VITE_API_URL || '';
-const APK_DOWNLOAD_URL = API_BASE
-  ? `${API_BASE}/api/v1/download/apk`
-  : 'https://github.com/TirthC27/Nexaris/releases/latest/download/Nexaris.apk';
+const APK_DOWNLOAD_URL = 'https://github.com/TirthC27/Nexaris/releases/latest/download/Nexaris.apk';
 
 function App() {
-  const [downloading, setDownloading] = useState(false);
-  const [toast, setToast] = useState('');
-
-  const handleDownload = useCallback(() => {
-    setDownloading(true);
-    setToast('Download starting...');
-
-    // Create a hidden anchor and trigger download
-    const link = document.createElement('a');
-    link.href = APK_DOWNLOAD_URL;
-    link.setAttribute('download', 'Nexaris.apk');
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-
-    // Reset state after a delay
-    setTimeout(() => setDownloading(false), 3000);
-    setTimeout(() => setToast(''), 4000);
-  }, []);
-
   return (
     <>
-      {/* ═══════ TOAST NOTIFICATION ═══════ */}
-      {toast && (
-        <div className="toast-notification">
-          <span className="toast-icon">⬇️</span>
-          {toast}
-        </div>
-      )}
-
       {/* ═══════ NAVBAR ═══════ */}
       <nav className="navbar">
         <div className="navbar-brand">
@@ -60,14 +27,14 @@ function App() {
             <span className="btn-icon">🔬</span>
             Researcher Dashboard
           </a>
-          <button
+          <a
             className="btn btn-primary btn-glow"
-            onClick={handleDownload}
-            disabled={downloading}
+            href={APK_DOWNLOAD_URL}
+            download="Nexaris.apk"
           >
             <span className="btn-icon">🤖</span>
-            {downloading ? 'Downloading…' : 'Download APK'}
-          </button>
+            Download APK
+          </a>
         </div>
       </nav>
 
@@ -93,18 +60,18 @@ function App() {
             earning on-chain rewards.
           </p>
           <div className="hero-actions">
-            <button
+            <a
               className="btn btn-primary btn-large btn-glow"
-              onClick={handleDownload}
-              disabled={downloading}
+              href={APK_DOWNLOAD_URL}
+              download="Nexaris.apk"
             >
               <span className="btn-icon android-icon">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.523 15.341c-.583 0-1.055-.476-1.055-1.063s.473-1.063 1.055-1.063 1.055.476 1.055 1.063-.472 1.063-1.055 1.063m-11.046 0c-.583 0-1.055-.476-1.055-1.063s.473-1.063 1.055-1.063 1.055.476 1.055 1.063-.472 1.063-1.055 1.063m11.4-6.02l1.91-3.31c.11-.19.045-.433-.145-.542-.19-.11-.433-.045-.542.145l-1.934 3.35C15.56 8.17 13.846 7.68 12 7.68s-3.56.49-5.166 1.284L4.9 5.614c-.11-.19-.353-.255-.543-.145-.19.11-.255.353-.145.542l1.91 3.31C2.92 11.16.536 14.572.001 18.595h23.998c-.535-4.023-2.92-7.435-6.122-9.274" />
                 </svg>
               </span>
-              {downloading ? 'Downloading…' : 'Download Android APK'}
-            </button>
+              Download Android APK
+            </a>
             <a
               href="/dashboard"
               className="btn btn-secondary btn-large"
@@ -350,17 +317,17 @@ function App() {
             </div>
 
             <div className="download-actions">
-              <button
+              <a
                 className="btn btn-primary btn-large btn-glow download-btn-main"
-                onClick={handleDownload}
-                disabled={downloading}
+                href={APK_DOWNLOAD_URL}
+                download="Nexaris.apk"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="dl-arrow">
                   <path d="M12 16l-5-5 1.41-1.41L11 12.17V4h2v8.17l2.59-2.58L17 11l-5 5z" />
                   <path d="M5 20h14v-2H5v2z" />
                 </svg>
-                {downloading ? 'Download Starting…' : 'Download Android APK'}
-              </button>
+                Download Android APK
+              </a>
               <a
                 href="https://github.com/TirthC27/Nexaris"
                 target="_blank"
