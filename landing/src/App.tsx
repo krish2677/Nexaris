@@ -315,8 +315,7 @@ function App() {
             </p>
             <div className="download-actions">
               <a
-                href="/nexaris-compute.apk"
-                download="nexaris-compute.apk"
+                href="https://github.com/krish2677/Nexaris/releases/latest/download/nexaris-compute.apk"
                 className="btn btn-primary btn-large"
               >
                 <span className="btn-icon">⬇️</span>

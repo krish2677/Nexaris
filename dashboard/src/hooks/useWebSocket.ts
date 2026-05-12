@@ -15,7 +15,7 @@ export function useWebSocket(channel: string = 'global') {
   const wsRef = useRef<WebSocket | null>(null);
   const [messages, setMessages] = useState<WSMessage[]>([]);
   const [connected, setConnected] = useState(false);
-  const reconnectTimer = useRef<ReturnType<typeof setTimeout>>();
+  const reconnectTimer = useRef<ReturnType<typeof setTimeout>>(null);
   const retryCount = useRef(0);
 
   const connect = useCallback(() => {

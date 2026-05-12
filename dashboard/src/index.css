@@ -1,12 +1,13 @@
-/* ═══════════════════════════════════════════
-   Nexaris Compute — Researcher Dashboard
+﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Nexaris Compute â€” Researcher Dashboard
    Design System: Neon Lime + Dark Purple
-   ═══════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap');
 
 :root {
-  /* Colors — Neon Lime + Dark Purple */
+  /* Colors â€” Neon Lime + Dark Purple */
   --bg-primary: #0a0a14;
   --bg-secondary: #12101e;
   --bg-card: rgba(18, 16, 30, 0.7);
@@ -57,7 +58,7 @@ body {
   min-height: 100vh;
 }
 
-/* ── Layout ── */
+/* â”€â”€ Layout â”€â”€ */
 .app-layout {
   display: flex;
   min-height: 100vh;
@@ -135,7 +136,7 @@ body {
   max-width: 1400px;
 }
 
-/* ── Page Headers ── */
+/* â”€â”€ Page Headers â”€â”€ */
 .page-header {
   margin-bottom: 32px;
 }
@@ -151,7 +152,7 @@ body {
   font-size: 14px;
 }
 
-/* ── Cards ── */
+/* â”€â”€ Cards â”€â”€ */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--glass-border);
@@ -175,7 +176,7 @@ body {
   margin-bottom: 12px;
 }
 
-/* ── Stat Cards ── */
+/* â”€â”€ Stat Cards â”€â”€ */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -220,7 +221,7 @@ body {
   margin-top: 2px;
 }
 
-/* ── Grid Layouts ── */
+/* â”€â”€ Grid Layouts â”€â”€ */
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -235,7 +236,7 @@ body {
   margin-bottom: 24px;
 }
 
-/* ── Tables ── */
+/* â”€â”€ Tables â”€â”€ */
 .table-container {
   overflow-x: auto;
 }
@@ -266,7 +267,7 @@ tr:hover td {
   background: var(--glass);
 }
 
-/* ── Badges ── */
+/* â”€â”€ Badges â”€â”€ */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -281,7 +282,7 @@ tr:hover td {
 .badge.completed { background: var(--lime-dim); color: var(--lime); }
 .badge.failed { background: var(--red-dim); color: var(--red); }
 
-/* ── Buttons ── */
+/* â”€â”€ Buttons â”€â”€ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -316,7 +317,7 @@ tr:hover td {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* ── Form ── */
+/* â”€â”€ Form â”€â”€ */
 .form-group {
   margin-bottom: 16px;
 }
@@ -352,7 +353,7 @@ tr:hover td {
   resize: vertical;
 }
 
-/* ── Pulse animation ── */
+/* â”€â”€ Pulse animation â”€â”€ */
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 0 0 var(--lime-glow); }
   50% { box-shadow: 0 0 20px 4px var(--lime-glow); }
@@ -362,7 +363,7 @@ tr:hover td {
   animation: pulse-glow 2s infinite;
 }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 1024px) {
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .sidebar { width: 72px; padding: 16px 8px; }
@@ -370,7 +371,7 @@ tr:hover td {
   .main-content { margin-left: 72px; }
 }
 
-/* ── Spin animation ── */
+/* â”€â”€ Spin animation â”€â”€ */
 @keyframes spin-anim {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -380,7 +381,7 @@ tr:hover td {
   animation: spin-anim 1s linear infinite;
 }
 
-/* ── Form select styling ── */
+/* â”€â”€ Form select styling â”€â”€ */
 .form-select {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239a95b0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
@@ -389,13 +390,13 @@ tr:hover td {
   padding-right: 36px;
 }
 
-/* ── Scrollbar ── */
+/* â”€â”€ Scrollbar â”€â”€ */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 
-/* ── Campaign & Orchestration Styles ── */
+/* â”€â”€ Campaign & Orchestration Styles â”€â”€ */
 .campaign-card {
   background: var(--bg-card);
   border: 1px solid var(--glass-border);
@@ -410,7 +411,7 @@ tr:hover td {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* ── Orchestration pulse for active engine ── */
+/* â”€â”€ Orchestration pulse for active engine â”€â”€ */
 @keyframes engine-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.6; }
@@ -420,19 +421,19 @@ tr:hover td {
   animation: engine-pulse 3s ease-in-out infinite;
 }
 
-/* ── Gradient text for headings ── */
+/* â”€â”€ Gradient text for headings â”€â”€ */
 .gradient-text {
   background: linear-gradient(135deg, var(--lime), var(--purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* ── Health bar glow ── */
+/* â”€â”€ Health bar glow â”€â”€ */
 @keyframes bar-fill {
   from { width: 0%; }
 }
 
-/* ── Tab active indicator ── */
+/* â”€â”€ Tab active indicator â”€â”€ */
 .tab-active {
   position: relative;
 }
@@ -447,3 +448,4 @@ tr:hover td {
   background: var(--lime);
   border-radius: 1px;
 }
+
