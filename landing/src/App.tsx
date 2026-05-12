@@ -2,7 +2,7 @@
 import './index.css'
 
 // ── APK Download Configuration ──
-const APK_DOWNLOAD_URL = 'https://github.com/TirthC27/Nexaris/releases/latest/download/Nexaris.apk';
+const APK_DOWNLOAD_URL = 'https://github.com/TirthC27/Nexaris/releases/download/v1.0.0/Nexiras.apk';
 
 function App() {
   return (
