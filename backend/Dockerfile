@@ -6,6 +6,8 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libpq-dev \
+    curl \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
@@ -14,6 +16,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY . .
+
+# Download the latest APK directly into the container so the backend can serve it
+RUN mkdir -p /app/downloads && \
+    curl -L -o /app/downloads/Nexaris.apk https://github.com/TirthC27/Nexaris/releases/latest/download/Nexaris.apk
 
 # Expose port
 EXPOSE 8000

@@ -1,9 +1,13 @@
 import { useState, useCallback } from 'react'
 import './index.css'
 
-// ── APK Download — served directly from GitHub Releases ──
-const APK_DOWNLOAD_URL = 'https://github.com/TirthC27/Nexaris/releases/latest/download/Nexaris.apk';
-
+// ── APK Download Configuration ──
+// When your backend is live, set this to your API URL.
+// For now, it falls back to the GitHub Releases URL.
+const API_BASE = import.meta.env.VITE_API_URL || '';
+const APK_DOWNLOAD_URL = API_BASE
+  ? `${API_BASE}/api/v1/download/apk`
+  : 'https://github.com/TirthC27/Nexaris/releases/latest/download/Nexaris.apk';
 
 function App() {
   const [downloading, setDownloading] = useState(false);
@@ -13,20 +17,13 @@ function App() {
     setDownloading(true);
     setToast('Download starting...');
 
-    // To prevent the page from redirecting while downloading a cross-origin file,
-    // we use a hidden iframe. The browser will see the 'attachment' header and
-    // trigger the download without changing the current page.
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.src = APK_DOWNLOAD_URL;
-    document.body.appendChild(iframe);
-    
-    // Clean up the iframe after the download has had time to start
-    setTimeout(() => {
-      if (document.body.contains(iframe)) {
-        document.body.removeChild(iframe);
-      }
-    }, 5000);
+    // Create a hidden anchor and trigger download
+    const link = document.createElement('a');
+    link.href = APK_DOWNLOAD_URL;
+    link.setAttribute('download', 'Nexaris.apk');
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
 
     // Reset state after a delay
     setTimeout(() => setDownloading(false), 3000);
