@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 
-const WS_BASE = import.meta.env.VITE_WS_URL || 'ws://192.168.0.104:8000';
+const WS_BASE = import.meta.env.VITE_WS_URL || 'wss://nexaris-750648121075.europe-west1.run.app';
 
 export interface WSMessage {
   type: string;

@@ -16,9 +16,9 @@ android {
     val devWsBaseUrl = (project.findProperty("DEV_WS_BASE_URL") as String?)
         ?: "ws://192.168.0.104:8000"
     val prodApiBaseUrl = (project.findProperty("PROD_API_BASE_URL") as String?)
-        ?: "https://your-api.desci.network"
+        ?: "https://nexaris-750648121075.europe-west1.run.app"
     val prodWsBaseUrl = (project.findProperty("PROD_WS_BASE_URL") as String?)
-        ?: "wss://your-api.desci.network"
+        ?: "wss://nexaris-750648121075.europe-west1.run.app"
 
     defaultConfig {
         applicationId = "com.desci.compute"

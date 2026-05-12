@@ -152,6 +152,31 @@ a:hover { color: #e0ff4d; }
   transform: translateY(-2px);
   color: var(--lime);
 }
+/* Purple outline — used for Researcher Dashboard CTA */
+.btn-outline {
+  background: rgba(139, 92, 246, 0.08);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+}
+.btn-outline:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.7);
+  transform: translateY(-2px);
+  color: #c4b5fd;
+  box-shadow: 0 0 24px rgba(139, 92, 246, 0.25);
+}
+/* Ghost — transparent, for tertiary actions */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  color: var(--text-primary);
+}
 .btn-large {
   padding: 16px 36px;
   font-size: 16px;

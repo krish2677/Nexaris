@@ -53,6 +53,13 @@ function App() {
           <a href="#download">Download</a>
         </div>
         <div className="navbar-cta">
+          <a
+            href="/dashboard"
+            className="btn btn-outline"
+          >
+            <span className="btn-icon">🔬</span>
+            Researcher Dashboard
+          </a>
           <button
             className="btn btn-primary btn-glow"
             onClick={handleDownload}
@@ -99,10 +106,17 @@ function App() {
               {downloading ? 'Downloading…' : 'Download Android APK'}
             </button>
             <a
+              href="/dashboard"
+              className="btn btn-secondary btn-large"
+            >
+              <span className="btn-icon">🔬</span>
+              Researcher Dashboard
+            </a>
+            <a
               href="https://github.com/TirthC27/Nexaris"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-secondary btn-large"
+              className="btn btn-ghost btn-large"
             >
               <span className="btn-icon">⭐</span>
               Star on GitHub

@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_URL || 'http://192.168.0.104:8000/api/v1';
+const API_BASE = import.meta.env.VITE_API_URL || 'https://nexaris-750648121075.europe-west1.run.app/api/v1';
 
 class ApiError extends Error {
   status: number;
