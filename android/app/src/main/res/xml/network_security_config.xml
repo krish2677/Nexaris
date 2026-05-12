@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- By default, disallow cleartext traffic (HTTP/WS) for all production domains -->
+    <base-config cleartextTrafficPermitted="false" />
+    
+    <!-- Allow cleartext traffic ONLY for local development IP addresses -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">10.0.2.2</domain> <!-- Android Emulator -->
+        <domain includeSubdomains="true">192.168.0.104</domain> <!-- Local Dev PC -->
+        <domain includeSubdomains="true">localhost</domain>
+    </domain-config>
+</network-security-config>
