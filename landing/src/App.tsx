@@ -50,7 +50,7 @@ function App() {
               Download for Android
             </a>
             <a
-              href="https://github.com/krish2677/Nexaris"
+              href="https://github.com/TirthC27/Nexaris"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary btn-large"
@@ -315,14 +315,14 @@ function App() {
             </p>
             <div className="download-actions">
               <a
-                href="https://github.com/krish2677/Nexaris/releases/latest/download/nexaris-compute.apk"
+                href="https://github.com/TirthC27/Nexaris/releases/latest/download/nexaris-compute.apk"
                 className="btn btn-primary btn-large"
               >
                 <span className="btn-icon">⬇️</span>
                 Download APK (v1.0.0)
               </a>
               <a
-                href="https://github.com/krish2677/Nexaris"
+                href="https://github.com/TirthC27/Nexaris"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary btn-large"
@@ -358,7 +358,7 @@ function App() {
           </div>
           <div className="footer-links">
             <a
-              href="https://github.com/krish2677/Nexaris"
+              href="https://github.com/TirthC27/Nexaris"
               target="_blank"
               rel="noopener noreferrer"
             >
