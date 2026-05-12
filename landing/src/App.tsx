@@ -2,12 +2,9 @@ import { useState, useCallback } from 'react'
 import './index.css'
 
 // ── APK Download Configuration ──
-// When your backend is live, set this to your API URL.
-// For now, it falls back to the GitHub Releases URL.
-const API_BASE = import.meta.env.VITE_API_URL || '';
-const APK_DOWNLOAD_URL = API_BASE
-  ? `${API_BASE}/api/v1/download/apk`
-  : 'https://github.com/TirthC27/Nexaris/releases/latest/download/Nexaris.apk';
+// We always use the GitHub Release URL because hosting binaries in Cloud Run 
+// requires adding them to the Docker image, which is inefficient.
+const APK_DOWNLOAD_URL = 'https://github.com/TirthC27/Nexaris/releases/latest/download/Nexaris.apk';
 
 function App() {
   const [downloading, setDownloading] = useState(false);
