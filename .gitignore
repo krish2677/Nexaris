@@ -1,0 +1,44 @@
+# ─── Python ───
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+.venv/
+
+# ─── Node ───
+node_modules/
+dist/
+.next/
+*.tsbuildinfo
+
+# ─── Android ───
+android/.gradle/
+android/.idea/
+android/.kotlin/
+android/app/build/
+android/build/
+android/local.properties
+*.apk
+*.aab
+*.hprof
+
+# ─── IDE ───
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ─── OS ───
+.DS_Store
+Thumbs.db
+
+# ─── Keys & Secrets ───
+*.jks
+*.keystore
+backend/.env
+dashboard/.env
+landing/.env
+
+# ─── Misc ───
+*.log

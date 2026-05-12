@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="desci_primary">#CDFF00</color>
+    <color name="desci_primary_dark">#8BA600</color>
+    <color name="desci_background">#0A0A14</color>
+    <color name="desci_surface">#12101E</color>
+    <color name="desci_purple">#8B5CF6</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>
