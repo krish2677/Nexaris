@@ -1,10 +1,12 @@
 import { useState, useCallback } from 'react'
 import './index.css'
 
-// ── APK Download Configuration ──
-// We always use the GitHub Release URL because hosting binaries in Cloud Run 
-// requires adding them to the Docker image, which is inefficient.
+// ── APK Download — served directly from GitHub Releases ──
 const APK_DOWNLOAD_URL = 'https://github.com/TirthC27/Nexaris/releases/latest/download/Nexaris.apk';
+
+// Dashboard URL — when deployed as unified app, this is /dashboard
+// When deployed as standalone landing, link to separate Vercel deploy
+const DASHBOARD_URL = '/dashboard';
 
 function App() {
   const [downloading, setDownloading] = useState(false);
