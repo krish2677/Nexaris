@@ -613,6 +613,131 @@ a:hover { color: #e0ff4d; }
   font-size: 13px;
 }
 
+/* ─── GLOWING DOWNLOAD BUTTON ─── */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  animation: btnPulseGlow 3s ease-in-out infinite;
+}
+.btn-glow::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 70%
+  );
+  animation: btnShine 4s ease-in-out infinite;
+}
+@keyframes btnPulseGlow {
+  0%, 100% { box-shadow: 0 0 24px rgba(205, 255, 0, 0.25); }
+  50% { box-shadow: 0 0 48px rgba(205, 255, 0, 0.5), 0 0 80px rgba(205, 255, 0, 0.15); }
+}
+@keyframes btnShine {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(100%) rotate(25deg); }
+}
+.btn-glow:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  animation: none;
+}
+
+.android-icon { display: flex; align-items: center; }
+.android-icon svg { fill: #0a0a14; }
+
+/* ─── TOAST NOTIFICATION ─── */
+.toast-notification {
+  position: fixed;
+  top: 88px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background: rgba(205, 255, 0, 0.12);
+  border: 1px solid rgba(205, 255, 0, 0.3);
+  border-radius: 100px;
+  color: var(--lime);
+  font-size: 14px;
+  font-weight: 600;
+  backdrop-filter: blur(16px);
+  animation: toastSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.toast-icon { font-size: 18px; }
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ─── APK INFO PILLS ─── */
+.apk-info-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.apk-info-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 24px;
+  background: rgba(205, 255, 0, 0.06);
+  border: 1px solid rgba(205, 255, 0, 0.15);
+  border-radius: 12px;
+  min-width: 100px;
+}
+.apk-info-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.apk-info-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--lime);
+  font-family: var(--font-mono);
+}
+
+/* ─── DOWNLOAD BUTTON ANIMATION ─── */
+.download-btn-main {
+  gap: 12px;
+  font-size: 18px;
+  padding: 18px 44px;
+}
+.download-btn-main .dl-arrow {
+  animation: bounceDown 2s ease-in-out infinite;
+}
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+.download-icon-wrap {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+.android-icon-large {
+  filter: drop-shadow(0 0 20px rgba(205, 255, 0, 0.4));
+  animation: androidFloat 4s ease-in-out infinite;
+}
+@keyframes androidFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   .navbar { padding: 0 20px; }
@@ -628,4 +753,7 @@ a:hover { color: #e0ff4d; }
   .footer-content { flex-direction: column; text-align: center; }
   .tech-grid { grid-template-columns: repeat(2, 1fr); }
   .download-meta { flex-direction: column; gap: 12px; }
+  .apk-info-row { gap: 10px; }
+  .apk-info-pill { padding: 10px 16px; min-width: 80px; }
+  .download-btn-main { font-size: 16px; padding: 16px 32px; }
 }

@@ -221,6 +221,10 @@ def create_app() -> FastAPI:
     app.include_router(mcp_api_router, prefix=prefix)
     app.include_router(campaigns_router, prefix=prefix)
 
+    # ── APK Download (public, no auth required) ──
+    from app.api.download import router as download_router
+    app.include_router(download_router, prefix=prefix)
+
     # ── WebSocket endpoint with JWT auth ──
     @app.websocket("/ws/{channel}")
     async def websocket_endpoint(

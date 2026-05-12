@@ -1,0 +1,2 @@
+# Place your signed APK here as: Nexaris.apk
+# The backend will serve it via GET /api/v1/download/apk

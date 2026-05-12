@@ -1,8 +1,45 @@
+import { useState, useCallback } from 'react'
 import './index.css'
 
+// ── APK Download Configuration ──
+// When your backend is live, set this to your API URL.
+// For now, it falls back to the GitHub Releases URL.
+const API_BASE = import.meta.env.VITE_API_URL || '';
+const APK_DOWNLOAD_URL = API_BASE
+  ? `${API_BASE}/api/v1/download/apk`
+  : 'https://github.com/TirthC27/Nexaris/releases/latest/download/Nexaris.apk';
+
 function App() {
+  const [downloading, setDownloading] = useState(false);
+  const [toast, setToast] = useState('');
+
+  const handleDownload = useCallback(() => {
+    setDownloading(true);
+    setToast('Download starting...');
+
+    // Create a hidden anchor and trigger download
+    const link = document.createElement('a');
+    link.href = APK_DOWNLOAD_URL;
+    link.setAttribute('download', 'Nexaris.apk');
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    // Reset state after a delay
+    setTimeout(() => setDownloading(false), 3000);
+    setTimeout(() => setToast(''), 4000);
+  }, []);
+
   return (
     <>
+      {/* ═══════ TOAST NOTIFICATION ═══════ */}
+      {toast && (
+        <div className="toast-notification">
+          <span className="toast-icon">⬇️</span>
+          {toast}
+        </div>
+      )}
+
       {/* ═══════ NAVBAR ═══════ */}
       <nav className="navbar">
         <div className="navbar-brand">
@@ -16,10 +53,14 @@ function App() {
           <a href="#download">Download</a>
         </div>
         <div className="navbar-cta">
-          <a href="#download" className="btn btn-primary">
-            <span className="btn-icon">📲</span>
-            Get the App
-          </a>
+          <button
+            className="btn btn-primary btn-glow"
+            onClick={handleDownload}
+            disabled={downloading}
+          >
+            <span className="btn-icon">🤖</span>
+            {downloading ? 'Downloading…' : 'Download APK'}
+          </button>
         </div>
       </nav>
 
@@ -45,10 +86,18 @@ function App() {
             earning on-chain rewards.
           </p>
           <div className="hero-actions">
-            <a href="#download" className="btn btn-primary btn-large">
-              <span className="btn-icon">⬇️</span>
-              Download for Android
-            </a>
+            <button
+              className="btn btn-primary btn-large btn-glow"
+              onClick={handleDownload}
+              disabled={downloading}
+            >
+              <span className="btn-icon android-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.523 15.341c-.583 0-1.055-.476-1.055-1.063s.473-1.063 1.055-1.063 1.055.476 1.055 1.063-.472 1.063-1.055 1.063m-11.046 0c-.583 0-1.055-.476-1.055-1.063s.473-1.063 1.055-1.063 1.055.476 1.055 1.063-.472 1.063-1.055 1.063m11.4-6.02l1.91-3.31c.11-.19.045-.433-.145-.542-.19-.11-.433-.045-.542.145l-1.934 3.35C15.56 8.17 13.846 7.68 12 7.68s-3.56.49-5.166 1.284L4.9 5.614c-.11-.19-.353-.255-.543-.145-.19.11-.255.353-.145.542l1.91 3.31C2.92 11.16.536 14.572.001 18.595h23.998c-.535-4.023-2.92-7.435-6.122-9.274"/>
+                </svg>
+              </span>
+              {downloading ? 'Downloading…' : 'Download Android APK'}
+            </button>
             <a
               href="https://github.com/TirthC27/Nexaris"
               target="_blank"
@@ -242,85 +291,62 @@ function App() {
             <div className="section-label">🛠️ Tech Stack</div>
           </div>
           <div className="tech-grid">
-            <div className="tech-pill">
-              <span className="tech-icon">🐍</span>
-              <div>
-                <div className="tech-name">FastAPI</div>
-                <div className="tech-role">Backend API</div>
-              </div>
-            </div>
-            <div className="tech-pill">
-              <span className="tech-icon">🐘</span>
-              <div>
-                <div className="tech-name">PostgreSQL</div>
-                <div className="tech-role">Supabase Database</div>
-              </div>
-            </div>
-            <div className="tech-pill">
-              <span className="tech-icon">⚡</span>
-              <div>
-                <div className="tech-name">Redis</div>
-                <div className="tech-role">Queue & Cache</div>
-              </div>
-            </div>
-            <div className="tech-pill">
-              <span className="tech-icon">🤖</span>
-              <div>
-                <div className="tech-name">Kotlin</div>
-                <div className="tech-role">Android (Compose)</div>
-              </div>
-            </div>
-            <div className="tech-pill">
-              <span className="tech-icon">⚛️</span>
-              <div>
-                <div className="tech-name">React + Vite</div>
-                <div className="tech-role">Dashboard</div>
-              </div>
-            </div>
-            <div className="tech-pill">
-              <span className="tech-icon">☀️</span>
-              <div>
-                <div className="tech-name">Solana</div>
-                <div className="tech-role">On-Chain Treasury</div>
-              </div>
-            </div>
-            <div className="tech-pill">
-              <span className="tech-icon">🐳</span>
-              <div>
-                <div className="tech-name">Docker</div>
-                <div className="tech-role">Containerization</div>
-              </div>
-            </div>
-            <div className="tech-pill">
-              <span className="tech-icon">📈</span>
-              <div>
-                <div className="tech-name">Prometheus</div>
-                <div className="tech-role">Monitoring</div>
-              </div>
-            </div>
+            <div className="tech-pill"><span className="tech-icon">🐍</span><div><div className="tech-name">FastAPI</div><div className="tech-role">Backend API</div></div></div>
+            <div className="tech-pill"><span className="tech-icon">🐘</span><div><div className="tech-name">PostgreSQL</div><div className="tech-role">Supabase Database</div></div></div>
+            <div className="tech-pill"><span className="tech-icon">⚡</span><div><div className="tech-name">Redis</div><div className="tech-role">Queue & Cache</div></div></div>
+            <div className="tech-pill"><span className="tech-icon">🤖</span><div><div className="tech-name">Kotlin</div><div className="tech-role">Android (Compose)</div></div></div>
+            <div className="tech-pill"><span className="tech-icon">⚛️</span><div><div className="tech-name">React + Vite</div><div className="tech-role">Dashboard</div></div></div>
+            <div className="tech-pill"><span className="tech-icon">☀️</span><div><div className="tech-name">Solana</div><div className="tech-role">On-Chain Treasury</div></div></div>
+            <div className="tech-pill"><span className="tech-icon">🐳</span><div><div className="tech-name">Docker</div><div className="tech-role">Containerization</div></div></div>
+            <div className="tech-pill"><span className="tech-icon">📈</span><div><div className="tech-name">Prometheus</div><div className="tech-role">Monitoring</div></div></div>
           </div>
         </div>
       </section>
 
-      {/* ═══════ DOWNLOAD ═══════ */}
+      {/* ═══════ DOWNLOAD SECTION ═══════ */}
       <section className="download-section" id="download">
         <div className="download-card">
           <div className="download-content">
-            <span className="phone-icon">📱</span>
+            <div className="download-icon-wrap">
+              <svg className="android-icon-large" width="64" height="64" viewBox="0 0 24 24" fill="var(--lime)">
+                <path d="M17.523 15.341c-.583 0-1.055-.476-1.055-1.063s.473-1.063 1.055-1.063 1.055.476 1.055 1.063-.472 1.063-1.055 1.063m-11.046 0c-.583 0-1.055-.476-1.055-1.063s.473-1.063 1.055-1.063 1.055.476 1.055 1.063-.472 1.063-1.055 1.063m11.4-6.02l1.91-3.31c.11-.19.045-.433-.145-.542-.19-.11-.433-.045-.542.145l-1.934 3.35C15.56 8.17 13.846 7.68 12 7.68s-3.56.49-5.166 1.284L4.9 5.614c-.11-.19-.353-.255-.543-.145-.19.11-.255.353-.145.542l1.91 3.31C2.92 11.16.536 14.572.001 18.595h23.998c-.535-4.023-2.92-7.435-6.122-9.274"/>
+              </svg>
+            </div>
             <h2>Download the Android App</h2>
             <p>
               Turn your idle Android device into a node in the Nexaris
               decentralized scientific compute network. Earn SOL rewards for
               every verified computation.
             </p>
+
+            {/* ── APK Info Pills ── */}
+            <div className="apk-info-row">
+              <div className="apk-info-pill">
+                <span className="apk-info-label">Version</span>
+                <span className="apk-info-value">v1.0.0</span>
+              </div>
+              <div className="apk-info-pill">
+                <span className="apk-info-label">Size</span>
+                <span className="apk-info-value">~15 MB</span>
+              </div>
+              <div className="apk-info-pill">
+                <span className="apk-info-label">Android</span>
+                <span className="apk-info-value">8.0+</span>
+              </div>
+            </div>
+
             <div className="download-actions">
-              <a
-                href="https://github.com/TirthC27/Nexaris/releases/latest/download/nexaris-compute.apk"
-                className="btn btn-primary btn-large"
+              <button
+                className="btn btn-primary btn-large btn-glow download-btn-main"
+                onClick={handleDownload}
+                disabled={downloading}
               >
-                <span className="btn-icon">⬇️</span>
-                Download APK (v1.0.0)
-              </a>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="dl-arrow">
+                  <path d="M12 16l-5-5 1.41-1.41L11 12.17V4h2v8.17l2.59-2.58L17 11l-5 5z"/>
+                  <path d="M5 20h14v-2H5v2z"/>
+                </svg>
+                {downloading ? 'Download Starting…' : 'Download Android APK'}
+              </button>
               <a
                 href="https://github.com/TirthC27/Nexaris"
                 target="_blank"
@@ -332,18 +358,10 @@ function App() {
               </a>
             </div>
             <div className="download-meta">
-              <span>
-                <span className="check">✓</span> Android 8.0+
-              </span>
-              <span>
-                <span className="check">✓</span> No root required
-              </span>
-              <span>
-                <span className="check">✓</span> Open source
-              </span>
-              <span>
-                <span className="check">✓</span> ~ 15 MB
-              </span>
+              <span><span className="check">✓</span> No root required</span>
+              <span><span className="check">✓</span> Open source</span>
+              <span><span className="check">✓</span> Direct download</span>
+              <span><span className="check">✓</span> No Play Store needed</span>
             </div>
           </div>
         </div>
@@ -357,19 +375,12 @@ function App() {
             Nexaris
           </div>
           <div className="footer-links">
-            <a
-              href="https://github.com/TirthC27/Nexaris"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
+            <a href="https://github.com/TirthC27/Nexaris" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="#features">Features</a>
             <a href="#download">Download</a>
           </div>
           <div className="footer-copy">
-            © {new Date().getFullYear()} Nexaris. Built for Decentralized
-            Science.
+            © {new Date().getFullYear()} Nexaris. Built for Decentralized Science.
           </div>
         </div>
       </footer>
