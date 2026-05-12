@@ -16,13 +16,10 @@ function App() {
     setDownloading(true);
     setToast('Download starting...');
 
-    // Create a hidden anchor and trigger download
-    const link = document.createElement('a');
-    link.href = APK_DOWNLOAD_URL;
-    link.setAttribute('download', 'Nexaris.apk');
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
+    // Direct navigation is required for cross-origin file downloads
+    // The browser will handle the download natively without leaving the page
+    window.location.href = APK_DOWNLOAD_URL;
+
 
     // Reset state after a delay
     setTimeout(() => setDownloading(false), 3000);
