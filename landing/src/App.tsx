@@ -13,10 +13,20 @@ function App() {
     setDownloading(true);
     setToast('Download starting...');
 
-    // Direct navigation is required for cross-origin file downloads
-    // The browser will handle the download natively without leaving the page
-    window.location.href = APK_DOWNLOAD_URL;
-
+    // To prevent the page from redirecting while downloading a cross-origin file,
+    // we use a hidden iframe. The browser will see the 'attachment' header and
+    // trigger the download without changing the current page.
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = APK_DOWNLOAD_URL;
+    document.body.appendChild(iframe);
+    
+    // Clean up the iframe after the download has had time to start
+    setTimeout(() => {
+      if (document.body.contains(iframe)) {
+        document.body.removeChild(iframe);
+      }
+    }, 5000);
 
     // Reset state after a delay
     setTimeout(() => setDownloading(false), 3000);
