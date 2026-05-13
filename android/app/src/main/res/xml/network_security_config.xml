@@ -6,7 +6,7 @@
     <!-- Allow cleartext traffic ONLY for local development IP addresses -->
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">10.0.2.2</domain> <!-- Android Emulator -->
-        <domain includeSubdomains="true">192.168.0.104</domain> <!-- Local Dev PC -->
+        <domain includeSubdomains="true">https://nexaris-750648121075.europe-west1.run.app</domain> <!-- Local Dev PC -->
         <domain includeSubdomains="true">localhost</domain>
     </domain-config>
 </network-security-config>
