@@ -16,6 +16,10 @@ android {
         ?: "https://nexaris-750648121075.europe-west1.run.app"
     val prodWsBaseUrl = (project.findProperty("PROD_WS_BASE_URL") as String?)
         ?: "wss://nexaris-750648121075.europe-west1.run.app"
+    val devApiBaseUrl = (project.findProperty("DEV_API_BASE_URL") as String?)
+        ?: "http://10.0.2.2:3000"
+    val devWsBaseUrl = (project.findProperty("DEV_WS_BASE_URL") as String?)
+        ?: "ws://10.0.2.2:3000"
 
     defaultConfig {
         applicationId = "com.desci.compute"
@@ -40,7 +44,11 @@ android {
             buildConfigField("String", "API_BASE_URL", "\"$prodApiBaseUrl\"")
             buildConfigField("String", "WS_BASE_URL", "\"$prodWsBaseUrl\"")
         }
-
+        debug {
+            // Explicitly use DEV URLs for the debug build variant
+            buildConfigField("String", "API_BASE_URL", "\"$devApiBaseUrl\"")
+            buildConfigField("String", "WS_BASE_URL", "\"$devWsBaseUrl\"")
+        }
     }
 
     compileOptions {
