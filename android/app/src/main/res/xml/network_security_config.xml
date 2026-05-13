@@ -6,7 +6,7 @@
     <!-- Allow cleartext traffic ONLY for local development IP addresses -->
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">10.0.2.2</domain> <!-- Android Emulator -->
-        
+        <domain includeSubdomains="true">localhost</domain> <!-- Local Dev PC -->
         <domain includeSubdomains="true">localhost</domain>
     </domain-config>
 </network-security-config>

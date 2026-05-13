@@ -40,11 +40,7 @@ android {
             buildConfigField("String", "API_BASE_URL", "\"$prodApiBaseUrl\"")
             buildConfigField("String", "WS_BASE_URL", "\"$prodWsBaseUrl\"")
         }
-        debug {
-            // Explicitly use DEV URLs for the debug build variant
-            buildConfigField("String", "API_BASE_URL", "\"$devApiBaseUrl\"")
-            buildConfigField("String", "WS_BASE_URL", "\"$devWsBaseUrl\"")
-        }
+
     }
 
     compileOptions {
